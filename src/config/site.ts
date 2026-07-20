@@ -119,7 +119,7 @@ export const metricas = [
   { v: 24, suffix: "h", label: "resposta garantida" },
   { v: 100, suffix: "%", label: "código sob medida" },
   { v: 1, suffix: "", label: "ponto de contato direto" },
-  { v: 0, suffix: "", label: "templates prontos" },
+  { v: 7, suffix: "d", label: "para a primeira prévia" },
 ];
 
 export const stack = [

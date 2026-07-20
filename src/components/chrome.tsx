@@ -188,7 +188,6 @@ export function Footer() {
         </div>
         <div className="mono flex flex-col gap-2 text-xs" style={{ color: "var(--muted)" }}>
           <span suppressHydrationWarning>Brasil · {hora}</span>
-          <a href={site.github} target="_blank" rel="noopener noreferrer" className="transition-colors hover:text-[var(--accent-2)]">github.com/KauaGoncalvess</a>
           <span>© {new Date().getFullYear()} {site.name}. Feito com precisão.</span>
         </div>
       </div>
