@@ -114,14 +114,6 @@ export const processo = [
   { n: "05", t: "Evolução", d: "Produto vivo: métricas, melhorias contínuas e novas frentes — o lançamento é o começo." },
 ];
 
-// Compromissos assumidos com cada cliente — não estatísticas históricas.
-export const metricas = [
-  { v: 24, suffix: "h", label: "resposta garantida" },
-  { v: 100, suffix: "%", label: "código sob medida" },
-  { v: 1, suffix: "", label: "ponto de contato direto" },
-  { v: 7, suffix: "d", label: "para a primeira prévia" },
-];
-
 export const stack = [
   "TypeScript", "React", "Next.js", "Node.js", "Python", "PostgreSQL",
   "AWS", "Docker", "Kubernetes", "OpenAI", "Anthropic", "WhatsApp API",

@@ -63,15 +63,13 @@ function Obj({ id, accent }: { id: string; accent: string }) {
           ))}
         </group>
       );
-    case "saas": // camadas de plataforma
+    case "saas": // janela de produto web com cards flutuando
       return (
         <group ref={g}>
-          {[-0.5, 0, 0.5].map((y, i) => (
-            <mesh key={i} position={[0, y, 0]}>
-              <cylinderGeometry args={[0.8 - i * 0.14, 0.8 - i * 0.14, 0.18, 56]} />
-              {i === 2 ? glossy(accent) : dark}
-            </mesh>
-          ))}
+          <mesh><roundedBoxGeometry args={[1.7, 1.15, 0.1, 4, 0.05]} />{dark}</mesh>
+          <mesh position={[0, 0.44, 0.06]}><roundedBoxGeometry args={[1.56, 0.18, 0.02, 3, 0.02]} />{light}</mesh>
+          <mesh position={[-0.45, -0.12, 0.18]} rotation={[0, 0.15, 0]}><roundedBoxGeometry args={[0.55, 0.5, 0.06, 3, 0.03]} />{glossy(accent)}</mesh>
+          <mesh position={[0.35, -0.2, 0.28]} rotation={[0, -0.2, 0]}><roundedBoxGeometry args={[0.7, 0.34, 0.06, 3, 0.03]} />{light}</mesh>
         </group>
       );
     case "ia": // núcleo + elétrons orbitando
@@ -86,21 +84,19 @@ function Obj({ id, accent }: { id: string; accent: string }) {
           ))}
         </group>
       );
-    case "automacoes": // engrenagem: anel + dentes + núcleo
+    case "automacoes": { // cabeça de robô — bot na hora
+      const eye = <meshPhysicalMaterial color={accent} emissive={accent} emissiveIntensity={1.6} roughness={0.2} clearcoat={1} />;
       return (
-        <group ref={g} rotation={[0.55, 0, 0]}>
-          <mesh><torusGeometry args={[0.72, 0.2, 28, 64]} />{glossy(accent)}</mesh>
-          {Array.from({ length: 8 }).map((_, i) => {
-            const a = (i * Math.PI) / 4;
-            return (
-              <mesh key={i} position={[Math.cos(a) * 0.98, Math.sin(a) * 0.98, 0]} rotation={[0, 0, a]}>
-                <roundedBoxGeometry args={[0.24, 0.16, 0.28, 3, 0.05]} />{dark}
-              </mesh>
-            );
-          })}
-          <mesh rotation={[Math.PI / 2, 0, 0]}><cylinderGeometry args={[0.26, 0.26, 0.34, 32]} />{dark}</mesh>
+        <group ref={g}>
+          <mesh><roundedBoxGeometry args={[1.15, 0.95, 0.95, 4, 0.18]} />{dark}</mesh>
+          <mesh position={[-0.26, 0.08, 0.48]}><sphereGeometry args={[0.13, 24, 24]} />{eye}</mesh>
+          <mesh position={[0.26, 0.08, 0.48]}><sphereGeometry args={[0.13, 24, 24]} />{eye}</mesh>
+          <mesh position={[0, -0.24, 0.49]}><roundedBoxGeometry args={[0.42, 0.07, 0.02, 2, 0.02]} />{light}</mesh>
+          <mesh position={[0, 0.62, 0]}><cylinderGeometry args={[0.03, 0.03, 0.3, 12]} />{light}</mesh>
+          <mesh position={[0, 0.82, 0]}><sphereGeometry args={[0.09, 16, 16]} />{eye}</mesh>
         </group>
       );
+    }
     case "whatsapp": // celular com notificações flutuando (ref. Orby)
       return (
         <group ref={g}>

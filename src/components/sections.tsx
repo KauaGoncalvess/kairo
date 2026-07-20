@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { gsap, Reveal, TiltCard, Magnetic, Counter, usePRM, EASE_DRAMA } from "@/lib/fx";
-import { services, processo, metricas, stack, wa, site, type Service } from "@/config/site";
+import { gsap, Reveal, TiltCard, Magnetic, usePRM, EASE_DRAMA } from "@/lib/fx";
+import { services, processo, stack, wa, site, type Service } from "@/config/site";
 
 const Card3D = dynamic(() => import("./objects"), { ssr: false });
 
@@ -183,9 +183,11 @@ export function Services() {
               return (
                 <div key={s.id} className="absolute left-1/2 top-1/2" style={{ transform: `rotate(${ang}deg) translateX(122px) rotate(${-ang}deg)` }}>
                   <div className="orbit-item -translate-x-1/2 -translate-y-1/2">
-                    <button onClick={() => setOpen(s)} aria-label={s.name}
-                      className="glass flex h-11 w-11 items-center justify-center rounded-full">
-                      <span className="h-3 w-3 rounded-full" style={{ background: s.accent, boxShadow: `0 0 12px ${s.accent}` }} />
+                    <button onClick={() => setOpen(s)} aria-label={s.name} className="flex flex-col items-center gap-1">
+                      <span className="glass flex h-11 w-11 items-center justify-center rounded-full">
+                        <span className="h-3 w-3 rounded-full animate-[breathe_2s_ease-in-out_infinite]" style={{ background: s.accent, boxShadow: `0 0 12px ${s.accent}` }} />
+                      </span>
+                      <span className="mono whitespace-nowrap text-[9px] uppercase tracking-wider" style={{ color: "var(--muted)" }}>{s.short}</span>
                     </button>
                   </div>
                 </div>
@@ -264,19 +266,7 @@ export function Processo() {
 export function Prova() {
   return (
     <section className="border-y px-6 py-16 md:px-10 md:py-20" style={{ borderColor: "var(--line)" }}>
-      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 md:grid-cols-4">
-        {metricas.map((m, i) => (
-          <Reveal key={m.label} delay={i * 0.08}>
-            <div>
-              <span className="display text-5xl font-bold md:text-6xl text-gradient">
-                <Counter to={m.v} suffix={m.suffix} />
-              </span>
-              <p className="mono mt-2 text-xs uppercase tracking-widest" style={{ color: "var(--muted)" }}>{m.label}</p>
-            </div>
-          </Reveal>
-        ))}
-      </div>
-      <div className="relative mx-auto mt-12 max-w-6xl overflow-hidden"
+      <div className="relative mx-auto max-w-6xl overflow-hidden"
         style={{ maskImage: "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)" }}>
         <div className="animate-marquee flex w-max gap-10">
           {[...stack, ...stack].map((t, i) => (
