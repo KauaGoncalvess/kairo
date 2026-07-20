@@ -6,7 +6,7 @@ export const site = {
   tagline: "Software no tempo certo.",
   description:
     "A KAIRO projeta e constrói produtos digitais — SaaS, IA, automações e sistemas sob medida — com a precisão de quem sabe que detalhes decidem tudo.",
-  url: "https://kauagoncalvess.github.io/kairo",
+  url: "https://kairo-kappa-liard.vercel.app",
   github: "https://github.com/KauaGoncalvess/kairo",
   contact: {
     whatsapp: "5531995816540",

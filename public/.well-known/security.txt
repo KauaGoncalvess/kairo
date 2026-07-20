@@ -1,0 +1,4 @@
+Contact: https://github.com/KauaGoncalvess/kairo/issues
+Preferred-Languages: pt-BR, en
+Expires: 2027-07-20T00:00:00.000Z
+Policy: https://github.com/KauaGoncalvess/kairo#seguranca

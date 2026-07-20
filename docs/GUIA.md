@@ -42,7 +42,7 @@ Regras:
 - **Contatos**: troque os placeholders de WhatsApp/e-mail em `src/config/site.ts` (comentários `PLACEHOLDER`).
 - **Conteúdo**: serviços, processo, métricas e stack também vivem em `src/config/site.ts` — o site inteiro reage.
 - **Rodar local**: `npm install && npm run dev` (http://localhost:3000). Build: `npm run build` → `out/`.
-- **Deploy**: push em `main` dispara `.github/workflows/deploy.yml` (lint → build → Pages). Passo único manual: em *Settings → Pages*, definir **Source: GitHub Actions**.
+- **Deploy**: Vercel (projeto `kairo`, export estático). Headers de segurança em `vercel.json`. Conecte o repositório na Vercel para deploy automático a cada push em `main`.
 
 ## Evolução futura
 

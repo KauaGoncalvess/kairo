@@ -1,15 +1,11 @@
 import type { NextConfig } from "next";
 
-// GITHUB_PAGES=true é setado no workflow de deploy para servir sob /kairo
-const onPages = process.env.GITHUB_PAGES === "true";
-const repo = "kairo";
-
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
   images: { unoptimized: true },
-  basePath: onPages ? `/${repo}` : "",
-  assetPrefix: onPages ? `/${repo}/` : undefined,
+  // Cabeçalhos de segurança (CSP etc.) vivem em vercel.json — export estático
+  // não aplica headers do Next em runtime.
 };
 
 export default nextConfig;
