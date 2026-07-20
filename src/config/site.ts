@@ -6,17 +6,18 @@ export const site = {
   tagline: "Software no tempo certo.",
   description:
     "A KAIRO projeta e constrói produtos digitais — SaaS, IA, automações e sistemas sob medida — com a precisão de quem sabe que detalhes decidem tudo.",
-  url: "https://kauagoncalvess.github.io/kauagonc",
-  github: "https://github.com/KauaGoncalvess/kauagonc",
+  url: "https://kauagoncalvess.github.io/kairo",
+  github: "https://github.com/KauaGoncalvess/kairo",
   contact: {
-    /** PLACEHOLDER — número com DDI/DDD, só dígitos. Ex.: 5511999999999 */
-    whatsapp: "5500000000000",
+    whatsapp: "5531995816540",
     /** PLACEHOLDER — e-mail de contato real */
     email: "contato@kairo.exemplo",
   },
 };
 
-export const wa = (msg = "Olá! Quero iniciar um projeto com a KAIRO.") =>
+export const wa = (
+  msg = "Olá! Vim pelo site da KAIRO 👋 Tenho interesse nos serviços de vocês (software sob medida, SaaS, IA, automações, bots de WhatsApp, apps…) e queria entender como podemos tirar meu projeto do papel. Podemos conversar?"
+) =>
   `https://wa.me/${site.contact.whatsapp}?text=${encodeURIComponent(msg)}`;
 
 export type Service = {

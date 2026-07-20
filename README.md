@@ -18,20 +18,13 @@ npm run build      # export estático em ./out
 
 1. Uma vez só: em **Settings → Pages**, defina **Source: GitHub Actions**.
 2. Todo push em `main` roda `.github/workflows/deploy.yml` (lint → build → deploy).
-3. URL: `https://kauagoncalvess.github.io/kauagonc/`
+3. URL: `https://kauagoncalvess.github.io/kairo/`
 
-## Trocar os contatos (obrigatório antes de divulgar)
+## Contatos e conteúdo
 
-Os CTAs usam **placeholders**. Edite `src/config/site.ts`:
+O WhatsApp real já está configurado em `src/config/site.ts`, junto com a mensagem pronta que o visitante envia ao clicar. O **e-mail ainda é placeholder** — troque `contato@kairo.exemplo` pelo real no mesmo arquivo.
 
-```ts
-contact: {
-  whatsapp: "5500000000000", // ← seu número real (DDI+DDD, só dígitos)
-  email: "contato@kairo.exemplo", // ← seu e-mail real
-},
-```
-
-Todo o conteúdo editável (serviços, processo, métricas, stack) vive nesse mesmo arquivo.
+Todo o conteúdo editável (serviços, processo, métricas, stack, mensagens de WhatsApp) vive em `src/config/site.ts`.
 
 ## Documentação
 
