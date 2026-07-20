@@ -40,7 +40,7 @@ function Obj({ id, accent }: { id: string; accent: string }) {
   useFrame(({ clock }) => {
     const t = clock.elapsedTime;
     if (g.current) {
-      g.current.rotation.y = t * 0.55;
+      g.current.rotation.y = Math.sin(t * 0.8) * 0.45; // vai e volta, sem girar 360°
       g.current.position.y = Math.sin(t * 1.1) * 0.07;
     }
     if (id === "dados") {
