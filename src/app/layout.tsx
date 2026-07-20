@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     locale: "pt_BR",
     type: "website",
-    images: ["/og.jpg"],
+    images: [site.ogImage],
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },

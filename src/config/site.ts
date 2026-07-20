@@ -8,6 +8,7 @@ export const site = {
     "A KAIRO projeta e constrói produtos digitais — SaaS, IA, automações e sistemas sob medida — com a precisão de quem sabe que detalhes decidem tudo.",
   url: "https://kairo-kappa-liard.vercel.app",
   github: "https://github.com/KauaGoncalvess/kairo",
+  ogImage: "https://raw.githubusercontent.com/KauaGoncalvess/kairo/main/public/og.jpg",
   contact: {
     whatsapp: "5531995816540",
     /** PLACEHOLDER — e-mail de contato real */
