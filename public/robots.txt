@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kauagoncalvess.github.io/kauagonc/sitemap.xml
