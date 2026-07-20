@@ -26,7 +26,7 @@ const studio = ({ gl, scene }: { gl: THREE.WebGLRenderer; scene: THREE.Scene }) 
 };
 
 const glossy = (color: string) => (
-  <meshPhysicalMaterial color={color} roughness={0.16} metalness={0.08} clearcoat={1} clearcoatRoughness={0.12} />
+  <meshPhysicalMaterial color={color} roughness={0.16} metalness={0.08} clearcoat={1} clearcoatRoughness={0.12} envMapIntensity={1.25} />
 );
 const dark = <meshPhysicalMaterial color="#171a24" roughness={0.28} metalness={0.35} clearcoat={0.7} clearcoatRoughness={0.2} />;
 const light = <meshPhysicalMaterial color="#f5f6f8" roughness={0.2} metalness={0.02} clearcoat={0.9} clearcoatRoughness={0.15} />;
@@ -34,6 +34,9 @@ const light = <meshPhysicalMaterial color="#f5f6f8" roughness={0.2} metalness={0
 function Obj({ id, accent }: { id: string; accent: string }) {
   const g = useRef<THREE.Group>(null);
   const parts = useRef<(THREE.Group | null)[]>([]);
+  useEffect(() => {
+    g.current?.traverse((o) => { o.castShadow = true; });
+  }, []);
   useFrame(({ clock }) => {
     const t = clock.elapsedTime;
     if (g.current) {
@@ -151,9 +154,13 @@ export default function Card3D({ s, className = "" }: { s: Service; className?: 
   return (
     <div ref={ref} className={className} aria-hidden>
       {on && !prm ? (
-        <Canvas camera={{ position: [0, 0.5, 3.4], fov: 38 }} dpr={[1, 1.5]} gl={{ alpha: true, antialias: true }} style={{ width: "100%", height: "100%" }} onCreated={studio}>
+        <Canvas shadows camera={{ position: [0, 0.7, 3.6], fov: 38 }} dpr={[1, 1.5]} gl={{ alpha: true, antialias: true }} style={{ width: "100%", height: "100%" }} onCreated={studio}>
           <ambientLight intensity={0.25} />
-          <directionalLight position={[3, 4, 2]} intensity={1.2} />
+          <directionalLight position={[3, 4, 2]} intensity={1.3} castShadow shadow-mapSize={[512, 512]} shadow-bias={-0.0004} />
+          <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -1.15, 0]} receiveShadow>
+            <circleGeometry args={[2.4, 48]} />
+            <shadowMaterial transparent opacity={0.35} />
+          </mesh>
           <pointLight position={[-3, -1, 3]} intensity={30} color={s.accent} />
           <Obj id={s.id} accent={s.accent} />
         </Canvas>

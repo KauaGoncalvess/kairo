@@ -169,6 +169,31 @@ export function Services() {
           </div>
         </div>
 
+        {/* Mobile: órbita compacta de toque */}
+        <div className="orbit-zone relative mx-auto mt-10 aspect-square w-full max-w-[330px] md:hidden">
+          <div className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2">
+            <div className="glass glow flex h-20 w-20 items-center justify-center rounded-full animate-[breathe_5s_ease-in-out_infinite]">
+              <span className="display text-sm font-bold text-gradient">{site.name}</span>
+            </div>
+          </div>
+          <div aria-hidden className="absolute left-1/2 top-1/2 h-[74%] w-[74%] -translate-x-1/2 -translate-y-1/2 rounded-full border" style={{ borderColor: "var(--line)" }} />
+          <div className="orbit-ring absolute inset-0">
+            {services.map((s, i) => {
+              const ang = (i / services.length) * 360;
+              return (
+                <div key={s.id} className="absolute left-1/2 top-1/2" style={{ transform: `rotate(${ang}deg) translateX(122px) rotate(${-ang}deg)` }}>
+                  <div className="orbit-item -translate-x-1/2 -translate-y-1/2">
+                    <button onClick={() => setOpen(s)} aria-label={s.name}
+                      className="glass flex h-11 w-11 items-center justify-center rounded-full">
+                      <span className="h-3 w-3 rounded-full" style={{ background: s.accent, boxShadow: `0 0 12px ${s.accent}` }} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
         {/* Mobile/tablet: trilho com snap */}
         <div className="mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:hidden" style={{ scrollbarWidth: "none" }}>
           {services.map((s) => (
