@@ -185,3 +185,31 @@ body::after {
   html { scroll-behavior: auto; }
   .line-mask > span { transform: none; }
 }
+
+/* ───────── Micro-cenas dos serviços ───────── */
+.cube {
+  position: relative;
+  display: block;
+  width: 34px;
+  height: 34px;
+  transform-style: preserve-3d;
+  animation: spin3d 9s linear infinite;
+}
+.cube i {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid currentColor;
+  background: color-mix(in oklab, currentColor 12%, transparent);
+}
+@keyframes spin3d {
+  to { transform: rotateX(360deg) rotateY(360deg); }
+}
+@keyframes rise {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+@keyframes chat {
+  0% { opacity: 0; transform: translateY(6px) scale(0.92); }
+  12%, 70% { opacity: 1; transform: none; }
+  85%, 100% { opacity: 0; transform: translateY(-4px); }
+}

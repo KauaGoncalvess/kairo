@@ -114,11 +114,12 @@ export const processo = [
   { n: "05", t: "Evolução", d: "Produto vivo: métricas, melhorias contínuas e novas frentes — o lançamento é o começo." },
 ];
 
+// Compromissos assumidos com cada cliente — não estatísticas históricas.
 export const metricas = [
-  { v: 40, suffix: "+", label: "projetos entregues" },
-  { v: 99, suffix: ",9%", label: "de disponibilidade" },
-  { v: 24, suffix: "h", label: "tempo máximo de resposta" },
-  { v: 8, suffix: "+", label: "anos de engenharia" },
+  { v: 24, suffix: "h", label: "resposta garantida" },
+  { v: 100, suffix: "%", label: "código sob medida" },
+  { v: 1, suffix: "", label: "ponto de contato direto" },
+  { v: 0, suffix: "", label: "templates prontos" },
 ];
 
 export const stack = [

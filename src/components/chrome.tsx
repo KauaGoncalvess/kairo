@@ -9,21 +9,23 @@ import { gsap, ScrollTrigger, Magnetic, usePRM } from "@/lib/fx";
 import { site, wa } from "@/config/site";
 
 /* ───────── Logo ───────── */
-export function Logo({ className = "h-6" }: { className?: string }) {
+// HTML+SVG flexível: o "O" orbital acompanha o texto em qualquer fonte/tela,
+// sem depender de métricas de fonte dentro de SVG (que variam por dispositivo).
+export function Logo({ className = "text-2xl" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 28" fill="none" className={className} aria-label={site.name} role="img">
-      <text x="0" y="21" className="display" fontSize="24" fontWeight="700" letterSpacing="2" fill="currentColor">
-        KAIR
-      </text>
-      <circle cx="86" cy="14" r="9" stroke="url(#lg)" strokeWidth="2.5" fill="none" />
-      <circle cx="86" cy="5" r="2.4" fill="var(--accent-2)" />
-      <defs>
-        <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-          <stop stopColor="var(--accent)" />
-          <stop offset="1" stopColor="var(--accent-2)" />
-        </linearGradient>
-      </defs>
-    </svg>
+    <span className={`display inline-flex items-center font-bold leading-none ${className}`} aria-label={site.name} role="img">
+      <span className="tracking-tight">KAIR</span>
+      <svg viewBox="0 0 28 30" className="ml-[0.06em] h-[1.02em] w-[0.95em]" aria-hidden>
+        <circle cx="14" cy="17.5" r="9.5" stroke="url(#lg)" strokeWidth="3" fill="none" />
+        <circle cx="14" cy="5.5" r="2.6" fill="var(--accent-2)" />
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop stopColor="var(--accent)" />
+            <stop offset="1" stopColor="var(--accent-2)" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </span>
   );
 }
 
@@ -53,29 +55,15 @@ export function Preloader() {
     const el = ref.current;
     if (!el) return;
     const tl = gsap.timeline({ onComplete: () => setDone(true) });
-    tl.to(el.querySelectorAll("[data-draw]"), { strokeDashoffset: 0, duration: 0.9, ease: "power2.inOut" })
-      .fromTo(el.querySelector("[data-tag]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, "-=0.3")
-      .to(el, { yPercent: -100, duration: 0.8, ease: "expo.inOut", delay: 0.25 });
+    tl.fromTo(el.querySelector("[data-logo]"), { opacity: 0, scale: 0.85, y: 16 }, { opacity: 1, scale: 1, y: 0, duration: 0.7, ease: "power3.out" })
+      .fromTo(el.querySelector("[data-tag]"), { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4 }, "-=0.25")
+      .to(el, { yPercent: -100, duration: 0.8, ease: "expo.inOut", delay: 0.35 });
     return () => { tl.kill(); };
   }, []);
   if (done) return null;
   return (
     <div ref={ref} className="fixed inset-0 z-[100] flex flex-col items-center justify-center gap-4" style={{ background: "var(--bg-0)" }}>
-      <svg viewBox="0 0 200 60" className="w-56" fill="none" aria-hidden>
-        <text x="8" y="44" className="display" fontSize="44" fontWeight="700" letterSpacing="4"
-          stroke="url(#plg)" strokeWidth="1.2" fill="none" data-draw
-          strokeDasharray="600" strokeDashoffset="600">
-          KAIR
-        </text>
-        <circle cx="164" cy="30" r="17" stroke="url(#plg)" strokeWidth="2" fill="none" data-draw
-          strokeDasharray="110" strokeDashoffset="110" />
-        <defs>
-          <linearGradient id="plg" x1="0" y1="0" x2="1" y2="0">
-            <stop stopColor="#7c6cff" />
-            <stop offset="1" stopColor="#4adede" />
-          </linearGradient>
-        </defs>
-      </svg>
+      <div data-logo><Logo className="text-6xl" /></div>
       <p data-tag className="mono text-xs tracking-[0.4em] uppercase" style={{ color: "var(--muted)" }}>
         software no tempo certo
       </p>
@@ -192,10 +180,10 @@ export function Footer() {
     return () => clearInterval(t);
   }, []);
   return (
-    <footer className="relative overflow-hidden border-t px-6 pb-28 pt-16 md:px-10" style={{ borderColor: "var(--line)" }}>
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-end md:justify-between">
+    <footer className="relative overflow-hidden border-t px-6 pb-24 pt-12 md:px-10" style={{ borderColor: "var(--line)" }}>
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <Logo className="h-8" />
+          <Logo className="text-3xl" />
           <p className="mt-3 max-w-xs text-sm" style={{ color: "var(--muted)" }}>{site.tagline} Produtos digitais construídos com obsessão por detalhe.</p>
         </div>
         <div className="mono flex flex-col gap-2 text-xs" style={{ color: "var(--muted)" }}>
